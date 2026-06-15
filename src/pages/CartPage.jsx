@@ -32,15 +32,15 @@ function CartPage() {
   );
 
   return (
-    <div className="bg-gray-100 min-h-screen p-5">
+    <div className="bg-gray-100 min-h-screen p-3 sm:p-5">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-xl font-semibold mb-4">
+        <h2 className="text-lg sm:text-xl font-semibold mb-4">
           My Cart ({cart.cartItems?.length || 0} items)
         </h2>
 
         {cart.cartItems?.length === 0 ? (
-          <div className="bg-white rounded shadow p-16 text-center">
-            <p className="text-2xl mb-4">🛒 Your cart is empty!</p>
+          <div className="bg-white rounded shadow p-10 sm:p-16 text-center">
+            <p className="text-xl sm:text-2xl mb-4">🛒 Your cart is empty!</p>
             <button
               onClick={() => navigate('/')}
               className="px-8 py-3 bg-blue-600 text-white font-bold rounded hover:bg-blue-700">
@@ -48,31 +48,31 @@ function CartPage() {
             </button>
           </div>
         ) : (
-          <div className="flex gap-4 items-start">
+          <div className="flex flex-col lg:flex-row gap-4 items-start">
 
             {/* Items */}
-            <div className="flex-1 space-y-3">
+            <div className="flex-1 w-full space-y-3">
               {cart.cartItems.map(item => (
                 <div key={item.id}
-                  className="bg-white rounded shadow p-5 flex gap-5">
+                  className="bg-white rounded shadow p-3 sm:p-5 flex gap-3 sm:gap-5">
                   <img
                     src={item.product.imageUrl || 'https://placehold.co/100'}
                     alt={item.product.name}
-                    className="w-24 h-24 object-contain"
+                    className="w-16 h-16 sm:w-24 sm:h-24 object-contain shrink-0"
                   />
-                  <div className="flex-1">
-                    <p className="text-base font-medium mb-1">{item.product.name}</p>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm sm:text-base font-medium mb-1 truncate">{item.product.name}</p>
                     <p className="text-xs text-gray-400 mb-2">{item.product.category?.name}</p>
-                    <p className="text-xl font-bold mb-1">
+                    <p className="text-lg sm:text-xl font-bold mb-1">
                       ₹{item.product.price?.toLocaleString()}
                     </p>
-                    <p className="text-sm text-gray-500 mb-1">Qty: {item.quantity}</p>
-                    <p className="text-sm font-semibold mb-3">
+                    <p className="text-xs sm:text-sm text-gray-500 mb-1">Qty: {item.quantity}</p>
+                    <p className="text-xs sm:text-sm font-semibold mb-3">
                       Subtotal: ₹{(item.product.price * item.quantity).toLocaleString()}
                     </p>
                     <button
                       onClick={() => handleRemove(item.id)}
-                      className="px-5 py-2 border border-gray-300 rounded text-sm hover:bg-gray-50">
+                      className="px-4 sm:px-5 py-1.5 sm:py-2 border border-gray-300 rounded text-xs sm:text-sm hover:bg-gray-50">
                       Remove
                     </button>
                   </div>
@@ -81,7 +81,7 @@ function CartPage() {
             </div>
 
             {/* Summary */}
-            <div className="w-80 bg-white rounded shadow p-5">
+            <div className="w-full lg:w-80 bg-white rounded shadow p-4 sm:p-5">
               <h3 className="text-sm font-bold text-gray-500 mb-4 uppercase">
                 Price Details
               </h3>

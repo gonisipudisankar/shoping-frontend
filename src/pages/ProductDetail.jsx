@@ -27,31 +27,31 @@ function ProductDetail() {
   );
 
   return (
-    <div className="bg-gray-100 min-h-screen p-5">
-      <div className="max-w-5xl mx-auto bg-white rounded shadow p-6 flex gap-10">
+    <div className="bg-gray-100 min-h-screen p-3 sm:p-5">
+      <div className="max-w-5xl mx-auto bg-white rounded shadow p-4 sm:p-6 flex flex-col md:flex-row gap-6 md:gap-10">
 
         {/* Image */}
-        <div className="w-80 flex-shrink-0">
+        <div className="w-full md:w-80 flex-shrink-0">
           <img
             src={product.imageUrl || 'https://placehold.co/300x300'}
             alt={product.name}
-            className="w-full h-80 object-contain"
+            className="w-full h-56 sm:h-72 md:h-80 object-contain"
             onError={e => e.target.src = 'https://placehold.co/300x300'}
           />
         </div>
 
         {/* Details */}
         <div className="flex-1">
-          <h1 className="text-2xl font-semibold text-gray-800 mb-2">{product.name}</h1>
+          <h1 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-2">{product.name}</h1>
           <p className="text-sm text-gray-500 mb-3">{product.category?.name}</p>
-          <p className="text-gray-600 mb-4">{product.description}</p>
+          <p className="text-sm sm:text-base text-gray-600 mb-4">{product.description}</p>
 
           {/* Price */}
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-3xl font-bold text-gray-900">
+            <span className="text-2xl sm:text-3xl font-bold text-gray-900">
               ₹{product.price?.toLocaleString()}
             </span>
-            <span className="text-green-600 font-medium">10% off</span>
+            <span className="text-green-600 font-medium text-sm sm:text-base">10% off</span>
           </div>
 
           {/* Stock */}
@@ -76,17 +76,17 @@ function ProductDetail() {
           </div>
 
           {/* Buttons */}
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <button
               onClick={handleAddToCart}
               disabled={product.stock === 0}
-              className="px-10 py-3 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded">
+              className="px-6 sm:px-10 py-3 bg-yellow-500 hover:bg-yellow-600 disabled:opacity-50 text-white font-bold rounded w-full sm:w-auto">
               🛒 Add to Cart
             </button>
             <button
               onClick={() => navigate('/orders')}
               disabled={product.stock === 0}
-              className="px-10 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded">
+              className="px-6 sm:px-10 py-3 bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white font-bold rounded w-full sm:w-auto">
               Buy Now
             </button>
           </div>
