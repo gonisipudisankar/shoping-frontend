@@ -26,13 +26,13 @@ function AdminCategories() {
 
   return (
     <AdminLayout>
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">🗂️ Categories</h2>
+      <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">🗂️ Categories</h2>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
 
         {/* Add Category Form */}
-        <div className="bg-white rounded shadow p-5">
-          <h3 className="text-base font-semibold mb-4">Add New Category</h3>
+        <div className="bg-white rounded shadow p-4 sm:p-5">
+          <h3 className="text-sm sm:text-base font-semibold mb-3 sm:mb-4">Add New Category</h3>
 
           {success && (
             <div className="bg-green-50 border border-green-200 rounded p-3 mb-3 text-green-700 text-sm">
@@ -63,19 +63,19 @@ function AdminCategories() {
         </div>
 
         {/* Categories List */}
-        <div className="bg-white rounded shadow p-5">
-          <h3 className="text-base font-semibold mb-4">
+        <div className="bg-white rounded shadow p-4 sm:p-5">
+          <h3 className="text-sm sm:text-base font-semibold mb-3 sm:mb-4">
             All Categories ({categories.length})
           </h3>
           <div className="space-y-2">
             {categories.map(cat => (
               <div key={cat.id}
-                className="flex items-center justify-between p-3 border border-gray-200 rounded hover:bg-gray-50">
-                <div>
-                  <p className="text-sm font-medium">{cat.name}</p>
-                  <p className="text-xs text-gray-400">{cat.description}</p>
+                className="flex items-center justify-between gap-2 p-3 border border-gray-200 rounded hover:bg-gray-50">
+                <div className="min-w-0">
+                  <p className="text-sm font-medium truncate">{cat.name}</p>
+                  <p className="text-xs text-gray-400 truncate">{cat.description}</p>
                 </div>
-                <span className="text-xs text-gray-400">ID: {cat.id}</span>
+                <span className="text-xs text-gray-400 shrink-0">ID: {cat.id}</span>
               </div>
             ))}
           </div>
